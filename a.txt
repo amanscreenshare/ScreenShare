@@ -1,1 +1,3 @@
-test
+git add "ScreenShareSetup.exe"
+git commit -m "updating the file"
+git push
