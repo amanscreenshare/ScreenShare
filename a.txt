@@ -1,4 +1,4 @@
-git add "ScreenShareSetup.exe"
+git add "ScreenShare_Setup_x64.exe"
 git commit -m "updating the file"
 git push
 
