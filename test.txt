@@ -1,1 +1,17 @@
-test
+Works on PowerShell 5.1
+
+$bytes = New-Object byte[] 32
+[System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
+$key = ($bytes | ForEach-Object { $_.ToString('x2') }) -join ''
+$key
+Create() exists on both .NET Framework and .NET Core, so this is the portable form. That gives 64 hex characters — 32 bytes of real entropy, no special characters to escape anywhere.
+
+For base64 instead, swap the third line:
+
+
+$key = [Convert]::ToBase64String($bytes)
+Check it before you use it
+
+$key.Length
+$key -match '^0+$'
+Expect 64 and False. If the second returns True, the fill silently failed again and you're looking at zeros.
